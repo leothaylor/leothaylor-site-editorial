@@ -1,0 +1,39 @@
+name: Bootstrap editorial clone
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  clone:
+    if: github.event_name == 'workflow_dispatch' || github.event.head_commit.message != 'Clone current site into editorial experiment'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Clone current Leo Thaylor site
+        run: |
+          git clone --depth 1 https://github.com/leothaylor/leothaylor-site.git /tmp/leothaylor-site
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          rsync -a --exclude='.git' /tmp/leothaylor-site/ ./
+
+      - name: Point clone to editorial GitHub Pages path
+        run: |
+          sed -i "s#base: '/leothaylor-site'#base: '/leothaylor-site-editorial'#" astro.config.mjs
+          sed -i 's#https://leothaylor.github.io/leothaylor-site/#https://leothaylor.github.io/leothaylor-site-editorial/#g' public/robots.txt README.md
+          sed -i 's/# Leo Thaylor — site pessoal V1/# Leo Thaylor — experimento editorial/' README.md
+
+      - name: Commit cloned baseline
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Clone current site into editorial experiment"
+          git push origin main
