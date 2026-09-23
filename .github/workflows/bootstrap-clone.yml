@@ -20,9 +20,13 @@ jobs:
 
       - name: Clone current Leo Thaylor site
         run: |
+          cp .github/workflows/bootstrap-clone.yml /tmp/bootstrap-clone.yml
           git clone --depth 1 https://github.com/leothaylor/leothaylor-site.git /tmp/leothaylor-site
           find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
           rsync -a --exclude='.git' /tmp/leothaylor-site/ ./
+          rm -f .github/workflows/deploy.yml
+          mkdir -p .github/workflows
+          cp /tmp/bootstrap-clone.yml .github/workflows/bootstrap-clone.yml
 
       - name: Point clone to editorial GitHub Pages path
         run: |
