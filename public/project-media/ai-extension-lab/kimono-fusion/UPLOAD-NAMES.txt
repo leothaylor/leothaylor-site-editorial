@@ -1,0 +1,21 @@
+Kimono Fusion Design Engine — nomes esperados pelo site
+
+MODELO 01
+kimono-01-01.png
+kimono-01-02.png
+kimono-01-03.png
+
+MODELO 02
+kimono-02-01.png
+kimono-02-02.png
+kimono-02-03.png
+
+MODELO 03
+kimono-03-01.png
+kimono-03-02.png
+kimono-03-03.png
+
+Pasta:
+public/project-media/ai-extension-lab/kimono-fusion/
+
+O layout já aponta para esses nomes. Quando os arquivos PNG forem adicionados com exatamente esses nomes, os placeholders somem e as imagens aparecem automaticamente.

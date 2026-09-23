@@ -1,0 +1,89 @@
+---
+const { items = [], columns = 2, label = 'Registros visuais do projeto' } = Astro.props;
+---
+<section class="aps-gallery" data-aps-gallery aria-label={label}>
+  <div class="aps-media-grid" style={`--aps-cols:${columns}`}>
+    {items.map((item) => (
+      <figure class="aps-media" data-aps-media>
+        <button class="aps-media__button" type="button" aria-label={`${item.alt}. Abrir imagem ampliada`}>
+          <div class="aps-media__placeholder" aria-hidden="true">
+            <span>IMAGEM RESERVADA</span>
+            <strong>Registro visual</strong>
+          </div>
+          <img
+            class="aps-media__img"
+            src={item.src}
+            alt={item.alt}
+            loading="lazy"
+            decoding="async"
+          />
+        </button>
+        {item.caption && <figcaption>{item.caption}</figcaption>}
+      </figure>
+    ))}
+  </div>
+
+  <dialog class="aps-lightbox" aria-label="Visualização ampliada da imagem">
+    <button class="aps-lightbox__close" type="button" aria-label="Fechar imagem ampliada">Fechar ×</button>
+    <div class="aps-lightbox__stage">
+      <img src="" alt="" />
+    </div>
+  </dialog>
+</section>
+
+<script is:inline>
+  document.querySelectorAll('[data-aps-gallery]').forEach((gallery) => {
+    if (gallery.dataset.ready === 'true') return;
+    gallery.dataset.ready = 'true';
+
+    const dialog = gallery.querySelector('.aps-lightbox');
+    const dialogImage = dialog?.querySelector('.aps-lightbox__stage img');
+    const closeButton = dialog?.querySelector('.aps-lightbox__close');
+    const stage = dialog?.querySelector('.aps-lightbox__stage');
+
+    gallery.querySelectorAll('[data-aps-media]').forEach((figure) => {
+      const img = figure.querySelector('.aps-media__img');
+      const button = figure.querySelector('.aps-media__button');
+      if (!img || !button) return;
+
+      const markReady = () => {
+        if (img.naturalWidth > 0) figure.classList.add('is-ready');
+      };
+      const markMissing = () => figure.classList.remove('is-ready');
+
+      img.addEventListener('load', markReady);
+      img.addEventListener('error', markMissing);
+      if (img.complete) {
+        if (img.naturalWidth > 0) markReady();
+        else markMissing();
+      }
+
+      button.addEventListener('click', () => {
+        if (!figure.classList.contains('is-ready') || !dialog || !dialogImage) return;
+        dialogImage.src = img.currentSrc || img.src;
+        dialogImage.alt = img.alt || 'Imagem ampliada';
+        dialog.showModal();
+        document.body.classList.add('lightbox-open');
+      });
+    });
+
+    const close = () => {
+      if (dialog?.open) dialog.close();
+    };
+
+    closeButton?.addEventListener('click', close);
+    dialog?.addEventListener('click', (event) => {
+      if (event.target === dialog) close();
+    });
+    stage?.addEventListener('click', (event) => {
+      if (event.target === stage) close();
+    });
+    dialog?.addEventListener('close', () => {
+      document.body.classList.remove('lightbox-open');
+      if (dialogImage) {
+        dialogImage.src = '';
+        dialogImage.alt = '';
+      }
+    });
+  });
+</script>

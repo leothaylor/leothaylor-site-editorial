@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ApsImageGallery from '../../../components/ApsImageGallery.astro';
+import '../../../styles/aps-proposals.css';
+
+const base = import.meta.env.BASE_URL;
+const media = [
+  { src: `${base}project-media/aps/pre-natal-nutricao/nutricao-01-apresentacao.png`, alt: 'Apresentação original da proposta de pré-natal com acompanhamento nutricional', caption: 'Material de apresentação que produzi em 2024.' },
+  { src: `${base}project-media/aps/pre-natal-nutricao/nutricao-02-proposta-original.png`, alt: 'Documento original da proposta de acompanhamento nutricional no pré-natal', caption: 'Documento com o desenho da proposta e os objetivos que eu queria testar.' },
+  { src: `${base}project-media/aps/pre-natal-nutricao/nutricao-03-modelo-assistencial.png`, alt: 'Reconstrução visual do modelo assistencial proposto', caption: 'Reconstrução visual atual do modelo assistencial. Não é um artefato original de 2024.' }
+];
+---
+<BaseLayout title="Pré-natal com acompanhamento nutricional longitudinal · Leo Thaylor" description="Como eu formulei uma hipótese de acompanhamento nutricional longitudinal integrado ao pré-natal e à prevenção antes da gestação.">
+  <article class="aps-case section-pad">
+    <a class="back-link" href={`${base}notas/propostas-melhoria-aps/`}>← Propostas de melhoria na APS</a>
+
+    <header class="aps-case-hero reveal">
+      <div class="aps-case-hero__index">03</div>
+      <div class="aps-case-hero__content">
+        <div class="aps-case-meta">
+          <span>Proposta de modelo assistencial</span>
+          <span>2024</span>
+          <span class="is-status">Não implementada</span>
+        </div>
+        <h1>Pré-natal com acompanhamento nutricional longitudinal</h1>
+        <p>Enquanto trabalhava na APS, comecei a pensar em como incorporar a nutrição de forma mais contínua ao cuidado materno-infantil. Minha hipótese era integrar acompanhamento nutricional longitudinal ao pré-natal, idealmente em frequência equivalente ao acompanhamento clínico, e complementar isso com educação nutricional antes da gestação.</p>
+      </div>
+    </header>
+
+    <div class="aps-case-body">
+      <aside class="aps-case-index reveal">
+        <span>CASO 03</span>
+        <strong>Pré-natal + nutrição</strong>
+        <p>Desenvolvi a proposta em 2024, com documentos de trabalho e materiais de apresentação. Ela não chegou a ser implementada.</p>
+      </aside>
+
+      <div class="aps-case-content">
+        <section class="aps-section reveal">
+          <span class="aps-section__eyebrow">O PROBLEMA QUE EU QUERIA ATACAR</span>
+          <h2>Eu queria antecipar o cuidado nutricional durante a gestação.</h2>
+          <p>Minha preocupação era que a nutrição entrasse apenas de forma pontual ou quando algum risco já estivesse instalado. Eu queria testar um modelo em que alimentação, estado nutricional e ganho de peso fossem acompanhados de forma contínua ao longo do pré-natal.</p>
+          <p>Os principais desfechos que eu tinha em mente eram anemia, diabetes gestacional, ganho de peso inadequado, deficiências nutricionais, prematuridade e baixo peso ao nascer.</p>
+        </section>
+
+        <section class="aps-section reveal">
+          <span class="aps-section__eyebrow">MINHA HIPÓTESE PRINCIPAL</span>
+          <h2>Acompanhamento nutricional pareado ao pré-natal clínico.</h2>
+          <p>Minha ideia era aproximar o acompanhamento nutricional da frequência das consultas de medicina e enfermagem. O desenho que eu imaginava era, idealmente, uma consulta nutricional para cada etapa regular do acompanhamento clínico.</p>
+          <p>Nos materiais que produzi em 2024, essa proposta aparece de forma concreta como consultas nutricionais mensais integradas ao pré-natal. O pareamento aproximado 1:1 era a hipótese de desenho que eu queria testar.</p>
+          <div class="aps-flow" aria-label="Fluxo conceitual do acompanhamento durante a gestação">
+            <div class="aps-flow__node">Pré-natal</div><div class="aps-flow__arrow">→</div>
+            <div class="aps-flow__node">Medicina / enfermagem</div><div class="aps-flow__arrow">+</div>
+            <div class="aps-flow__node">Nutrição longitudinal</div>
+          </div>
+        </section>
+
+        <section class="aps-section reveal">
+          <span class="aps-section__eyebrow">ANTES DA GESTAÇÃO</span>
+          <h2>O projeto também tinha um eixo preventivo.</h2>
+          <p>Na época, eu tinha visto um estudo americano sobre educação ou intervenção nutricional antes da gravidez. Isso me levou a incluir uma segunda frente na proposta: orientação nutricional para adolescentes e mulheres jovens antes de uma futura gestação.</p>
+          <p>Nos documentos de 2024, cheguei a propor metas dentro da ESF e pelo menos três momentos de orientação nutricional por ano para esse público.</p>
+          <div class="aps-flow" aria-label="Fluxo preventivo antes e durante a gestação">
+            <div class="aps-flow__node">Pré-concepção</div><div class="aps-flow__arrow">→</div>
+            <div class="aps-flow__node">Educação nutricional</div><div class="aps-flow__arrow">→</div>
+            <div class="aps-flow__node">Gestação</div>
+          </div>
+        </section>
+
+        <section class="aps-section reveal">
+          <span class="aps-section__eyebrow">COMO EU IMAGINAVA O CUIDADO</span>
+          <h2>Nutrição inserida na rotina da APS.</h2>
+          <p>Eu queria que o acompanhamento nutricional fizesse parte do percurso da gestante dentro da própria Atenção Primária, junto das consultas regulares, em vez de depender apenas de encaminhamentos ocasionais.</p>
+          <div class="aps-fact-grid">
+            <div class="aps-fact"><span>ACOMPANHAMENTO</span><strong>Consultas nutricionais mensais ao longo do pré-natal</strong></div>
+            <div class="aps-fact"><span>INTEGRAÇÃO</span><strong>Medicina, enfermagem e nutrição acompanhando a mesma gestação</strong></div>
+            <div class="aps-fact"><span>PREVENÇÃO</span><strong>Educação nutricional antes da gravidez</strong></div>
+            <div class="aps-fact"><span>OBJETIVO</span><strong>Identificar e acompanhar riscos antes que se tornassem problemas instalados</strong></div>
+          </div>
+        </section>
+
+        <section class="aps-section reveal">
+          <span class="aps-section__eyebrow">O QUE EU QUERIA ACOMPANHAR</span>
+          <h2>O efeito teria que aparecer em desfechos concretos.</h2>
+          <p>Se a proposta tivesse avançado, eu considerava importante acompanhar indicadores maternos e perinatais, como ganho de peso gestacional, anemia, diabetes gestacional, hipertensão e preeclâmpsia, prematuridade, baixo peso ao nascer e internação neonatal.</p>
+          <p>A mortalidade infantil fazia parte do raciocínio de longo prazo, mas esse tipo de desfecho exigiria um estudo maior, com desenho, amostra e comparação adequados.</p>
+        </section>
+
+        <section class="aps-section reveal">
+          <span class="aps-section__eyebrow">O QUE EU ESTUDEI PARA CONSTRUIR A IDEIA</span>
+          <h2>Usei materiais de pré-natal, alimentação e nutrição como base de estudo.</h2>
+          <p>Entre os materiais que eu consultava estavam o Guia de Referência Rápida de Atenção ao Pré-Natal da SMS-RJ, o Guia Alimentar para a População Brasileira e outros conteúdos sobre alimentação, ganho de peso e acompanhamento gestacional.</p>
+          <p>Essas referências me ajudaram a entender melhor o problema e organizar a proposta. Elas não validavam o modelo específico que eu queria testar.</p>
+        </section>
+
+        <section class="aps-section reveal">
+          <span class="aps-section__eyebrow">O QUE EU PRODUZI</span>
+          <h2>A ideia virou documentos e materiais de apresentação.</h2>
+          <p>Em 2024, produzi três documentos de trabalho com a proposta, os objetivos e hipóteses de impacto, além de dois materiais de apresentação. Também explorei cenários probabilísticos com IA durante o desenvolvimento da ideia, mas não uso esses cálculos como evidência ou resultado do projeto.</p>
+          <ApsImageGallery items={media} columns={3} label="Galeria da proposta de pré-natal com acompanhamento nutricional" />
+        </section>
+
+        <section class="aps-section reveal">
+          <span class="aps-section__eyebrow">ATÉ ONDE O PROJETO CHEGOU</span>
+          <h2>Apresentei a proposta, mas ela não avançou para implantação.</h2>
+          <p>Apresentei informalmente a ideia à gestão da Clínica da Família durante o período em que a unidade tinha parceria com a Afya. A proposta não teve continuidade institucional.</p>
+          <p>Não houve protocolo aprovado, agenda nutricional longitudinal implantada, pareamento 1:1 executado, coleta de desfechos ou avaliação antes e depois.</p>
+          <div class="aps-fact-grid">
+            <div class="aps-fact"><span>PRODUZIDO</span><strong>Documentos de trabalho e materiais de apresentação</strong></div>
+            <div class="aps-fact"><span>HIPÓTESE</span><strong>Acompanhamento nutricional longitudinal em frequência equivalente ao pré-natal clínico</strong></div>
+            <div class="aps-fact"><span>SEGUNDO EIXO</span><strong>Educação nutricional preventiva antes da gestação</strong></div>
+            <div class="aps-fact"><span>STATUS</span><strong>Não houve implantação ou teste em campo</strong></div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <footer class="aps-case-footer reveal">
+      <p>O projeto ficou no estágio de proposta de modelo assistencial. A hipótese estava estruturada e documentada, mas não chegou à fase de implementação e avaliação.</p>
+      <a href={`${base}notas/propostas-melhoria-aps/`}>Voltar à coleção →</a>
+    </footer>
+  </article>
+</BaseLayout>

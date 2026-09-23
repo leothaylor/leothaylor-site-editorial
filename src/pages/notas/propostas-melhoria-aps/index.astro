@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/aps-proposals.css';
+
+const base = import.meta.env.BASE_URL;
+const cards = [
+  {
+    number: '01',
+    title: 'Caderneta de Acompanhamento da Gestante',
+    summary: 'Eu desenvolvi uma caderneta para integrar, no mesmo instrumento, consulta, acompanhamento do ACS e educação em saúde ao longo da gestação.',
+    href: `${base}notas/propostas-melhoria-aps/caderneta-gestante/`,
+    image: `${base}project-media/aps/caderneta/caderneta-01-capa.png`,
+    alt: 'Capa do protótipo da Caderneta de Acompanhamento da Gestante',
+    tags: ['Protótipo de instrumento', '2024–2025', 'Não testado em campo']
+  },
+  {
+    number: '02',
+    title: 'Projeto ASTA',
+    summary: 'Eu estruturei uma proposta para reduzir perdas de informação e interrupções operacionais dentro da equipe, usando um ACS como referência organizacional com limites de atuação definidos.',
+    href: `${base}notas/propostas-melhoria-aps/projeto-asta/`,
+    image: `${base}project-media/aps/asta/asta-01-apresentacao.png`,
+    alt: 'Apresentação original do Projeto ASTA',
+    tags: ['Reorganização do trabalho', '2025', 'Não implementado']
+  },
+  {
+    number: '03',
+    title: 'Pré-natal com acompanhamento nutricional longitudinal',
+    summary: 'Eu formulei uma hipótese de acompanhamento nutricional longitudinal integrado ao pré-natal, com um segundo eixo de educação nutricional antes da gestação.',
+    href: `${base}notas/propostas-melhoria-aps/pre-natal-nutricao/`,
+    image: `${base}project-media/aps/pre-natal-nutricao/nutricao-01-apresentacao.png`,
+    alt: 'Apresentação original da proposta de pré-natal com acompanhamento nutricional',
+    tags: ['Modelo assistencial', '2024', 'Não implementado']
+  }
+];
+---
+<BaseLayout title="Propostas de melhoria na APS · Leo Thaylor" description="Projetos, protótipos e propostas que eu desenvolvi a partir de problemas que observei trabalhando na Atenção Primária.">
+  <main class="aps-collection section-pad">
+    <a class="back-link" href={`${base}notas/`}>← Todas as notas</a>
+
+    <header class="aps-collection-hero reveal">
+      <div class="aps-collection-hero__label"><span class="eyebrow">ATENÇÃO PRIMÁRIA · ARQUIVO DE TRABALHO</span></div>
+      <div>
+        <h1>Propostas de melhoria na APS.</h1>
+        <p>Projetos, protótipos e propostas de intervenção que desenvolvi a partir de problemas observados enquanto trabalhava em uma Clínica da Família. Alguns chegaram a ter material e plano de implantação, mas não foram implementados ou testados em campo.</p>
+        <p>Aqui eu apresento cada trabalho pelo problema que observei, pelo que cheguei a desenvolver e pelo estágio em que ele realmente ficou.</p>
+        <div class="aps-collection-meta">
+          <span>3 trabalhos</span>
+          <span>2024–2025</span>
+          <span>materiais e protótipos originais</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="aps-case-list reveal" aria-label="Propostas de melhoria na APS">
+      {cards.map((card) => (
+        <article class="aps-collection-card">
+          <div class="aps-collection-card__visual" data-aps-card-visual>
+            <div class="aps-collection-card__placeholder"><span>Registro visual será adicionado</span></div>
+            <img src={card.image} alt={card.alt} loading="lazy" decoding="async" />
+          </div>
+          <div class="aps-collection-card__body">
+            <span class="aps-collection-card__number">{card.number}</span>
+            <h2>{card.title}</h2>
+            <p>{card.summary}</p>
+            <div class="aps-collection-card__tags">{card.tags.map((tag) => <span>{tag}</span>)}</div>
+            <a class="aps-collection-card__link" href={card.href}>Ver trabalho →</a>
+          </div>
+        </article>
+      ))}
+    </section>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  document.querySelectorAll('[data-aps-card-visual]').forEach((visual) => {
+    const img = visual.querySelector('img');
+    if (!img) return;
+    const ready = () => {
+      if (img.naturalWidth > 0) visual.classList.add('is-ready');
+    };
+    const missing = () => visual.classList.remove('is-ready');
+    img.addEventListener('load', ready);
+    img.addEventListener('error', missing);
+    if (img.complete) {
+      if (img.naturalWidth > 0) ready();
+      else missing();
+    }
+  });
+</script>

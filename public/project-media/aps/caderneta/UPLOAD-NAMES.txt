@@ -1,0 +1,12 @@
+CADERNETA DE ACOMPANHAMENTO DA GESTANTE
+
+Suba as imagens nesta pasta com EXATAMENTE estes nomes:
+
+caderneta-01-capa.png
+caderneta-02-visao-geral.png
+caderneta-03-acompanhamento.png
+caderneta-04-periodo-gestacional.png
+caderneta-05-folheto.png
+caderneta-06-livreto.png
+
+A página já está preparada. Enquanto um arquivo não existir, o site exibe um espaço reservado. Quando o PNG for adicionado com o nome correto, ele aparece automaticamente e passa a abrir em ampliação ao clique.

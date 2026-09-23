@@ -1,0 +1,17 @@
+---
+const { note } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const { data } = note;
+const date = data.date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+---
+<article class="note-card">
+  <a href={`${base}notas/${note.id}/`} data-track="click_note">
+    <div class="note-card__meta">
+      <span>{data.category}</span>
+      <time datetime={data.date.toISOString()}>{date}</time>
+    </div>
+    <h3>{data.title}</h3>
+    <p>{data.summary}</p>
+    <span class="text-link">Ler nota <b>→</b></span>
+  </a>
+</article>

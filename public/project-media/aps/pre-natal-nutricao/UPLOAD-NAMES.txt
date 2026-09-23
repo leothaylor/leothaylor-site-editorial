@@ -1,0 +1,11 @@
+PRÉ-NATAL COM ACOMPANHAMENTO NUTRICIONAL LONGITUDINAL
+
+Suba as imagens nesta pasta com EXATAMENTE estes nomes:
+
+nutricao-01-apresentacao.png
+nutricao-02-proposta-original.png
+nutricao-03-modelo-assistencial.png
+
+A página já está preparada. Enquanto um arquivo não existir, o site exibe um espaço reservado. Quando o PNG for adicionado com o nome correto, ele aparece automaticamente e passa a abrir em ampliação ao clique.
+
+Observação: nutricao-03-modelo-assistencial.png foi reservado para uma reconstrução visual atual. A legenda pública já deixa explícito que não é um artefato original de 2024.

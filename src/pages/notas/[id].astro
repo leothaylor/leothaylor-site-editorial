@@ -1,0 +1,27 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes');
+  return notes.map((note) => ({ params: { id: note.id }, props: { note } }));
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+const { data } = note;
+const base = import.meta.env.BASE_URL;
+const date = data.date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+---
+<BaseLayout title={`${data.title} · Leo Thaylor`} description={data.summary}>
+  <article class="note-page section-pad">
+    <a class="back-link" href={`${base}notas/`}>← Todas as notas</a>
+    <header class="note-hero reveal">
+      <div class="case-hero__meta"><span class="eyebrow">{data.category}</span><time datetime={data.date.toISOString()}>{date}</time></div>
+      <h1>{data.title}</h1>
+      <p>{data.summary}</p>
+      {data.provenance && <div class="provenance"><strong>DE ONDE VÊM ESTES REGISTROS</strong><span>{data.provenance}</span></div>}
+    </header>
+    <div class="prose note-content reveal"><Content /></div>
+  </article>
+</BaseLayout>

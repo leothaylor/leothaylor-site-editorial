@@ -1,0 +1,44 @@
+.signal-strip{
+  position:relative;
+  left:50%;
+  width:100vw;
+  transform:translateX(-50%);
+  overflow:hidden;
+}
+
+.signal-strip>.signal-strip__track{
+  display:flex;
+  width:max-content;
+  min-width:0;
+  padding:0;
+  animation:ticker-seamless 42s linear infinite;
+  will-change:transform;
+}
+
+.signal-strip__copy{
+  flex:none;
+  display:block;
+  white-space:nowrap;
+  padding:17px 0;
+  font:500 10px var(--mono);
+  letter-spacing:.15em;
+  color:#858a84;
+}
+
+.signal-strip__copy i{
+  font-style:normal;
+  color:var(--amber);
+  padding:0 24px;
+}
+
+@keyframes ticker-seamless{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .signal-strip>.signal-strip__track{
+    animation:none;
+    transform:none;
+  }
+}

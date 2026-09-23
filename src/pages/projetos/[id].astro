@@ -1,0 +1,197 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/kimono-showcase.css';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { data } = project;
+const base = import.meta.env.BASE_URL;
+const style = `--project-accent:${data.accent};--project-accent-2:${data.accent2};--project-surface:${data.surface};--project-ink:${data.ink};`;
+const contentClass = `prose case-content reveal${project.id === 'ai-extension-lab' ? ' case-content--extension-lab' : ''}`;
+---
+<BaseLayout title={`${data.title} · Leo Thaylor`} description={data.summary}>
+  <article class="case-page section-pad" style={style}>
+    <a class="back-link" href={`${base}projetos/`}>← Todos os projetos</a>
+    <header class="case-hero reveal">
+      <div class="case-hero__meta">
+        <span class="eyebrow">{data.category}</span>
+        <span>{data.year}</span>
+        <span class="status-dot"><i></i>{data.status}</span>
+      </div>
+      <h1>{data.title}</h1>
+      <p>{data.summary}</p>
+
+      {data.media.length > 0 && (
+        <div class={`case-cover case-cover--${data.media[0].fit}`}>
+          <img src={data.media[0].url} alt={data.media[0].alt} decoding="async" />
+          <div class="case-cover__wash"></div>
+          {data.media[0].caption && <small>{data.media[0].caption}</small>}
+        </div>
+      )}
+
+      {data.metrics.length > 0 && (
+        <div class="case-metrics">
+          {data.metrics.map((metric) => <div><strong>{metric.value}</strong><span>{metric.label}</span></div>)}
+        </div>
+      )}
+
+      <div class="case-facts">
+        <div><small>MEU PAPEL</small><strong>{data.role}</strong></div>
+        <div><small>O QUE EXISTE HOJE</small><strong>{data.proof}</strong></div>
+      </div>
+      {(data.liveUrl || data.repoUrl) && (
+        <div class="case-actions">
+          {data.liveUrl && <a class="button" href={data.liveUrl} target="_blank" rel="noopener noreferrer" data-track="click_project">Abrir projeto ↗</a>}
+          {data.repoUrl && <a class="button button--ghost" href={data.repoUrl} target="_blank" rel="noopener noreferrer" data-track="click_github">Ver GitHub ↗</a>}
+        </div>
+      )}
+    </header>
+
+    <div class="case-body-grid">
+      <aside class="case-index reveal">
+        <span>PROJETO</span>
+        <strong>{String(data.order).padStart(2, '0')}</strong>
+        <p>{data.category}<br />{data.status}</p>
+      </aside>
+      <div class={contentClass}>
+        <Content />
+      </div>
+    </div>
+
+    {data.media.length > 1 && (
+      <section class="case-gallery reveal" aria-label="Galeria do projeto">
+        <div class="case-gallery__head"><span class="eyebrow">REGISTRO VISUAL</span><h2>Algumas telas e materiais do projeto.</h2></div>
+        <div class="case-gallery__grid">
+          {data.media.slice(1).map((item) => (
+            <figure class:list={{ 'is-contain': item.fit === 'contain' }}>
+              <img src={item.url} alt={item.alt} loading="lazy" decoding="async" />
+              {item.caption && <figcaption>{item.caption}</figcaption>}
+            </figure>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {data.tags.length > 0 && <div class="tag-list">{data.tags.map((tag) => <span>{tag}</span>)}</div>}
+  </article>
+
+  <dialog class="media-lightbox" id="project-media-lightbox" aria-label="Visualização ampliada da imagem">
+    <button class="media-lightbox__close" type="button" aria-label="Fechar imagem ampliada">Fechar ×</button>
+    <div class="media-lightbox__stage">
+      <img src="" alt="" />
+    </div>
+  </dialog>
+</BaseLayout>
+
+<script is:inline>
+  const refreshKimonoModel = (model) => {
+    if (!model) return;
+    const images = [...model.querySelectorAll('.kimono-slot__img')];
+    const ready = images.length > 0 && images.every((img) => img.complete && img.naturalWidth > 0);
+    if (!ready) return;
+
+    model.classList.remove('kimono-model--pending');
+    const title = model.querySelector('.kimono-model__head strong');
+    const note = model.querySelector('.kimono-model__head small');
+    if (title?.textContent?.trim() === 'Espaço reservado') title.textContent = 'Kimono Fusion';
+    if (note?.textContent?.includes('próximo conjunto')) note.textContent = '3 imagens do mesmo produto';
+  };
+
+  document.querySelectorAll('.kimono-slot__img').forEach((img) => {
+    const slot = img.closest('.kimono-slot');
+    const model = img.closest('.kimono-model');
+    const markMissing = () => {
+      slot?.classList.add('is-missing');
+      refreshKimonoModel(model);
+    };
+    const markReady = () => {
+      slot?.classList.remove('is-missing');
+      refreshKimonoModel(model);
+    };
+    img.addEventListener('error', markMissing);
+    img.addEventListener('load', markReady);
+    if (img.complete) {
+      if (img.naturalWidth === 0) markMissing();
+      else markReady();
+    }
+  });
+
+  document.querySelectorAll('.kimono-model').forEach(refreshKimonoModel);
+
+  const showcase = document.querySelector('.case-content--extension-lab .kimono-showcase');
+  if (showcase && !document.querySelector('.extension-kit')) {
+    const kit = document.createElement('section');
+    kit.className = 'extension-kit';
+    kit.setAttribute('aria-labelledby', 'kimono-kit-title');
+    kit.innerHTML = `
+      <div class="extension-kit__topline">
+        <span>EXTENSION KIT · V1</span>
+        <small>download direto · sem cadastro</small>
+      </div>
+      <h3 id="kimono-kit-title">Construa sua própria versão do Kimono Fusion.</h3>
+      <p>O pacote reúne as Instructions originais, 9 arquivos de Knowledge, documentação de arquitetura, licença e guias de configuração para ChatGPT GPT, Gemini Gem e Claude Project.</p>
+      <div class="extension-kit__flow" aria-label="Fluxo do framework">
+        <span>ARTE</span><i>→</i><span>EXTRAÇÃO</span><i>→</i><span>PRODUCT CANON</span><i>→</i><span>CONTINUIDADE</span><i>→</i><span>QA</span><i>→</i><span>MASTER PROMPT</span>
+      </div>
+      <div class="extension-kit__footer">
+        <div class="extension-kit__meta"><span>ZIP · 31 KB</span><span>GRATUITO</span><span>USO PERMITIDO · SEM REDISTRIBUIÇÃO</span></div>
+        <a class="extension-kit__button" href="../../downloads/kimono-fusion/kimono-fusion-extension-kit-v1.zip" download>↓ Baixar Extension Kit</a>
+      </div>`;
+    showcase.insertAdjacentElement('afterend', kit);
+  }
+
+  const lightbox = document.getElementById('project-media-lightbox');
+  const lightboxImage = lightbox?.querySelector('.media-lightbox__stage img');
+  const lightboxStage = lightbox?.querySelector('.media-lightbox__stage');
+  const closeButton = lightbox?.querySelector('.media-lightbox__close');
+
+  const closeLightbox = () => {
+    if (!lightbox?.open) return;
+    lightbox.close();
+  };
+
+  const openLightbox = (img) => {
+    if (!lightbox || !lightboxImage) return;
+    const slot = img.closest('.kimono-slot');
+    if (slot?.classList.contains('is-missing') || !img.naturalWidth) return;
+    lightboxImage.src = img.currentSrc || img.src;
+    lightboxImage.alt = img.alt || 'Imagem ampliada';
+    lightbox.showModal();
+    document.body.classList.add('lightbox-open');
+  };
+
+  document.querySelectorAll('.case-gallery img, .kimono-slot__img').forEach((img) => {
+    img.classList.add('is-zoomable');
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', `${img.alt || 'Imagem'}; abrir em tamanho ampliado`);
+    img.addEventListener('click', () => openLightbox(img));
+    img.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openLightbox(img);
+      }
+    });
+  });
+
+  closeButton?.addEventListener('click', closeLightbox);
+  lightbox?.addEventListener('click', (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+  lightboxStage?.addEventListener('click', (event) => {
+    if (event.target === lightboxStage) closeLightbox();
+  });
+  lightbox?.addEventListener('close', () => {
+    document.body.classList.remove('lightbox-open');
+    if (lightboxImage) {
+      lightboxImage.src = '';
+      lightboxImage.alt = '';
+    }
+  });
+</script>

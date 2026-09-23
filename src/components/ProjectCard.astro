@@ -1,0 +1,35 @@
+---
+const { project, mode = 'grid' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const { data } = project;
+const media = data.media?.[0];
+const style = `--project-accent:${data.accent};--project-accent-2:${data.accent2};--project-surface:${data.surface};--project-ink:${data.ink};`;
+---
+<article class={`project-card project-card--${mode} reveal`} style={style}>
+  <a class="project-card__link" href={`${base}projetos/${project.id}/`} data-track="click_project">
+    <div class="project-card__visual">
+      {media ? (
+        <img src={media.url} alt={media.alt} loading="lazy" decoding="async" class:list={{ 'is-contain': media.fit === 'contain' }} />
+      ) : (
+        <div class="project-card__fallback" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      )}
+      <div class="project-card__shade"></div>
+      <div class="project-card__visual-meta">
+        <span>{String(data.order).padStart(2, '0')}</span>
+        <span>{data.category}</span>
+      </div>
+      <strong class="project-card__visual-title">{data.title}</strong>
+    </div>
+    <div class="project-card__body">
+      <div class="project-card__topline">
+        <span class="status-dot"><i></i>{data.status}</span>
+        <span class="project-year">{data.year}</span>
+      </div>
+      <p>{data.summary}</p>
+      <div class="project-card__proof">{data.proof}</div>
+      <span class="text-link">Ver projeto <b>↗</b></span>
+    </div>
+  </a>
+</article>

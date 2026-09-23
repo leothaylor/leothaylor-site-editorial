@@ -1,0 +1,10 @@
+PROJETO ASTA
+
+Suba as imagens nesta pasta com EXATAMENTE estes nomes:
+
+asta-01-apresentacao.png
+asta-02-funcao-e-areas.png
+asta-03-semana-ou-fluxo.png
+asta-04-plano-implantacao.png
+
+A página já está preparada. Enquanto um arquivo não existir, o site exibe um espaço reservado. Quando o PNG for adicionado com o nome correto, ele aparece automaticamente e passa a abrir em ampliação ao clique.

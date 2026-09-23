@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ApsImageGallery from '../../../components/ApsImageGallery.astro';
+import '../../../styles/aps-proposals.css';
+
+const base = import.meta.env.BASE_URL;
+const media = [
+  { src: `${base}project-media/aps/asta/asta-01-apresentacao.png`, alt: 'Apresentação original do Projeto ASTA', caption: 'Apresentação que preparei para comunicar a proposta.' },
+  { src: `${base}project-media/aps/asta/asta-02-funcao-e-areas.png`, alt: 'Documento do Projeto ASTA com função e áreas de atuação', caption: 'Função, limites e áreas de atuação que defini para o ASTA.' },
+  { src: `${base}project-media/aps/asta/asta-03-semana-ou-fluxo.png`, alt: 'Material do Projeto ASTA com distribuição semanal ou fluxo de trabalho', caption: 'Distribuição semanal e organização do trabalho propostas.' },
+  { src: `${base}project-media/aps/asta/asta-04-plano-implantacao.png`, alt: 'Plano gradual de implantação do Projeto ASTA', caption: 'Plano gradual de implantação em três meses.' }
+];
+---
+<BaseLayout title="Projeto ASTA · Leo Thaylor" description="Como eu transformei problemas de organização observados em uma Clínica da Família em uma proposta estruturada de função, fluxo, implantação e acompanhamento.">
+  <article class="aps-case section-pad">
+    <a class="back-link" href={`${base}notas/propostas-melhoria-aps/`}>← Propostas de melhoria na APS</a>
+
+    <header class="aps-case-hero reveal">
+      <div class="aps-case-hero__index">02</div>
+      <div class="aps-case-hero__content">
+        <div class="aps-case-meta">
+          <span>Proposta de reorganização do trabalho</span>
+          <span>2025</span>
+          <span class="is-status">Não implementado formalmente</span>
+        </div>
+        <h1>Projeto ASTA</h1>
+        <p>Enquanto trabalhava como ACS, observei que boa parte da desorganização da rotina não vinha de falta de trabalho, mas da forma como demandas, informações e pendências circulavam dentro da unidade. A partir disso, criei o ASTA, uma proposta para transformar um ACS da própria equipe em referência técnico-organizacional, com função, limites, rotina, indicadores e plano de implantação definidos.</p>
+      </div>
+    </header>
+
+    <div class="aps-case-body">
+      <aside class="aps-case-index reveal">
+        <span>CASO 02</span>
+        <strong>Projeto ASTA</strong>
+        <p>O projeto chegou a diagnóstico operacional, desenho da função, questionários, plano de implantação, indicadores, continuidade e enquadramento funcional.</p>
+      </aside>
+
+      <div class="aps-case-content">
+        <section class="aps-section reveal">
+          <span class="aps-section__eyebrow">O PROBLEMA QUE EU VIA</span>
+          <h2>Muitas demandas simples acabavam interrompendo quem estava atendendo.</h2>
+          <p>Na rotina da Clínica da Família, eu via médicos e enfermeiros sendo interrompidos por dúvidas, receitas, carimbos, exames e demandas que poderiam ter sido organizadas antes. Técnicos eram interrompidos durante coleta, vacina e outros procedimentos. ACS também eram retirados de tarefas ou parados no acolhimento e nos corredores para resolver questões paralelas.</p>
+          <p>Além das interrupções, havia informação desencontrada, dificuldade para saber quem estava em qual setor, pendências que se acumulavam, mudanças de protocolo que nem sempre circulavam bem e pacientes esperando sem entender o que estava acontecendo.</p>
+        </section>
+
+        <section class="aps-section reveal">
+          <span class="aps-section__eyebrow">O DIAGNÓSTICO QUE EU FIZ</span>
+          <h2>Antes de fechar a proposta, eu tentei medir a rotina que estava vendo.</h2>
+          <p>Fiz um levantamento operacional combinando observação direta, contagens aproximadas, perguntas a profissionais e registros de situações recorrentes. Não era uma pesquisa científica. Era uma forma prática de transformar percepções do dia a dia em um diagnóstico minimamente organizado.</p>
+          <div class="aps-fact-grid">
+            <div class="aps-fact"><span>MÉDICO</span><strong>cerca de 20 interrupções ao longo do dia por demandas gerais</strong></div>
+            <div class="aps-fact"><span>ENFERMAGEM</span><strong>interrupções recorrentes em consulta, coleta, vacina e procedimentos</strong></div>
+            <div class="aps-fact"><span>ESPERA</span><strong>consulta com atraso médio registrado em torno de 45 min</strong></div>
+            <div class="aps-fact"><span>FLUXO</span><strong>satisfação da equipe registrada em 4/10 naquele levantamento</strong></div>
+          </div>
+          <p>Também criei questionários para ouvir médicos, enfermeiros, técnicos, ACS e outros profissionais sobre fluidez dos atendimentos, interrupções, tempo de espera, organização das linhas de cuidado e utilidade de formalizar uma função como o ASTA.</p>
+        </section>
+
+        <section class="aps-section reveal">
+          <span class="aps-section__eyebrow">O QUE EU PROPUS</span>
+          <h2>Um ACS da própria equipe como referência técnico-organizacional.</h2>
+          <p>Minha proposta não era criar uma chefia nem transformar o ACS em administrativo da clínica. O ASTA seria um ponto de organização dentro da própria Equipe de Saúde da Família, ajudando a reunir demandas, acompanhar pendências, facilitar a circulação de informações e proteger o tempo dos profissionais que estavam em atendimento.</p>
+          <div class="aps-fact-grid">
+            <div class="aps-fact"><span>FRENTE 01</span><strong>Apoio ao salão e ao fluxo cotidiano</strong></div>
+            <div class="aps-fact"><span>FRENTE 02</span><strong>Apoio à reunião semanal e às pendências</strong></div>
+            <div class="aps-fact"><span>FRENTE 03</span><strong>Organização administrativa interna da própria equipe</strong></div>
+            <div class="aps-fact"><span>FERRAMENTAS</span><strong>Caderno, calendário, pasta de pendências e planilha opcional</strong></div>
+          </div>
+        </section>
+
+        <section class="aps-section reveal">
+          <span class="aps-section__eyebrow">COMO A FUNÇÃO FUNCIONARIA</span>
+          <h2>Eu cheguei a distribuir o papel do ASTA ao longo da semana.</h2>
+          <p>Na versão mais estruturada do projeto, segunda, terça e quarta seriam concentradas em apoio ao salão e ao fluxo da equipe. Quinta seria dedicada ao apoio da reunião semanal. Sexta ficaria voltada à organização administrativa interna, atualização de controles e pendências.</p>
+          <p>A lógica era simples: usar ferramentas de baixo custo e pouca burocracia para criar continuidade entre o que acontecia no atendimento, nas reuniões e nas tarefas internas da equipe.</p>
+        </section>
+
+        <section class="aps-section reveal">
+          <span class="aps-section__eyebrow">COMO EU PENSEI A IMPLANTAÇÃO</span>
+          <h2>O plano era testar a utilidade antes de tentar consolidar a função.</h2>
+          <div class="aps-timeline">
+            <article><span>MÊS 1</span><strong>Observar e mapear</strong><p>Registrar demandas, interrupções, pendências e pontos de perda de tempo sem tentar mudar tudo de uma vez.</p></article>
+            <article><span>MÊS 2</span><strong>Organizar</strong><p>Atualizar calendário, apoiar reunião, estruturar caderno de pendências e pequenos fluxos internos.</p></article>
+            <article><span>MÊS 3</span><strong>Medir e consolidar</strong><p>Acompanhar indicadores simples, produzir relatos internos e avaliar se a função realmente estava ajudando.</p></article>
+          </div>
+          <p>Eu também escrevi uma análise específica para evitar que o ASTA virasse um projeto idealizado. Rejeitei metas rígidas no começo, mudanças impostas, dependência excessiva de terceiros e qualquer desvio que transformasse o ASTA em recepção ou administração geral.</p>
+        </section>
+
+        <section class="aps-section reveal">
+          <span class="aps-section__eyebrow">COMO EU PRETENDIA MEDIR</span>
+          <h2>Eu defini indicadores simples para acompanhar a função.</h2>
+          <p>O acompanhamento seria feito com medidas fáceis de registrar no cotidiano: demandas recebidas e resolvidas, interrupções evitáveis, calendário atualizado, pendências organizadas e apoio às reuniões.</p>
+          <p>Também produzi uma tabela de impacto esperado. Ela projetava redução de interrupções, menor tempo de espera, menos retrabalho e melhora da satisfação da equipe. Esses números eram estimativas do que o ASTA poderia produzir, não resultados observados.</p>
+          <div class="aps-caution">
+            <strong>Cenário observado e impacto estimado são coisas diferentes</strong>
+            <p>Os números do cenário inicial vieram do meu levantamento operacional na unidade. Já os percentuais de melhora com o ASTA eram projeções. Como a função não foi formalmente implementada, não existe um “antes e depois” real do projeto.</p>
+          </div>
+        </section>
+
+        <section class="aps-section reveal">
+          <span class="aps-section__eyebrow">LIMITES E ENQUADRAMENTO</span>
+          <h2>Eu também tentei resolver a pergunta de onde essa função caberia dentro do trabalho do ACS.</h2>
+          <p>Usei a Lei 11.350/2006 e a PNAB como referências para desenhar uma proposta de enquadramento da função. A versão mais madura mantinha o vínculo formal do ACS com sua microárea, previa pactuação da reorganização das atividades e deixava explícitos os limites do papel.</p>
+          <ul>
+            <li>Não tomar decisões clínicas.</li>
+            <li>Não substituir recepção ou acolhimento geral.</li>
+            <li>Não representar a gestão.</li>
+            <li>Não chefiar colegas.</li>
+            <li>Não alterar agendas sem autorização.</li>
+          </ul>
+          <p>Esse material fazia parte da defesa do projeto. Ele não era um parecer jurídico independente.</p>
+        </section>
+
+        <section class="aps-section reveal">
+          <span class="aps-section__eyebrow">O QUE EU PRODUZI</span>
+          <h2>O ASTA virou um projeto documentado, não só uma ideia.</h2>
+          <p>Eu produzi definição da função, áreas de atuação, rotina semanal, ferramentas, perfil ideal, questionários, indicadores, análise realista, plano gradual de implantação, plano de continuidade, proposta de enquadramento funcional, roteiro de apresentação e diferentes versões de apresentação do projeto.</p>
+          <ApsImageGallery items={media} columns={2} label="Galeria do Projeto ASTA" />
+        </section>
+
+        <section class="aps-section reveal">
+          <span class="aps-section__eyebrow">ATÉ ONDE EU CHEGUEI</span>
+          <h2>Estruturei o projeto em detalhe, mas o ASTA não chegou a ser formalmente implantado.</h2>
+          <p>Na rotina da unidade já existiam momentos em que algum ACS acabava assumindo informalmente uma postura mais organizadora e ajudava o fluxo a funcionar melhor. Essa experiência prática influenciou o desenho do ASTA, mas nunca virou uma implantação formal da função.</p>
+          <div class="aps-fact-grid">
+            <div class="aps-fact"><span>DIAGNÓSTICO</span><strong>Observação, contagens e perguntas sobre a rotina real</strong></div>
+            <div class="aps-fact"><span>DESENHO</span><strong>Função, limites, rotina, ferramentas e indicadores</strong></div>
+            <div class="aps-fact"><span>IMPLANTAÇÃO</span><strong>Plano de três meses e continuidade definidos</strong></div>
+            <div class="aps-fact"><span>STATUS</span><strong>Não houve implantação formal do ASTA</strong></div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <footer class="aps-case-footer reveal">
+      <p>Eu classifico o ASTA como uma proposta estruturada de reorganização do trabalho na APS. O projeto nasceu de um problema vivido, passou por diagnóstico, desenho, implantação planejada e definição de indicadores, mas não chegou à fase de execução formal.</p>
+      <a href={`${base}notas/propostas-melhoria-aps/pre-natal-nutricao/`}>Próximo: Pré-natal + nutrição →</a>
+    </footer>
+  </article>
+</BaseLayout>
