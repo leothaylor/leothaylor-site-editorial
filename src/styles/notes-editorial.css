@@ -41,3 +41,17 @@
 .editorial-note-page__provenance strong{display:block;margin-bottom:8px;color:#6f795d;font:600 9px var(--mono);letter-spacing:.11em}
 .editorial-note-page__provenance p{margin:0;color:#626a62;font-size:13px;line-height:1.6}
 @media(max-width:800px){.notes-index-hero{min-height:390px}.editorial-note-list{grid-template-columns:1fr}.editorial-note-page{padding:54px 14px 90px}.editorial-note-page__back{margin-bottom:54px}.editorial-note-page__body{margin-top:64px;font-size:18px}.editorial-note-page__body figure,.editorial-note-page__body>p:has(>img){width:calc(100vw - 28px)}}
+
+.editorial-note-placeholder{height:100%;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;background:radial-gradient(circle at 68% 32%,rgba(162,173,135,.22),transparent 27%),linear-gradient(145deg,#2b322c,#1f2420);color:var(--paper);position:relative;overflow:hidden}
+.editorial-note-placeholder:before{content:'';position:absolute;inset:18px;border:1px dashed rgba(239,238,232,.22)}
+.editorial-note-placeholder span,.editorial-note-placeholder strong{position:relative;z-index:1}
+.editorial-note-placeholder span{font:500 9px var(--mono);letter-spacing:.14em;color:var(--amber);text-transform:uppercase}
+.editorial-note-placeholder strong{font:800 clamp(20px,2.7vw,34px)/1 'Archivo',sans-serif;letter-spacing:-.03em;text-transform:uppercase}
+.editorial-note-placeholder--lead{min-height:520px}
+.editorial-note-page__placeholder-inline{width:min(1080px,calc(100vw - 48px));min-height:420px;margin:58px 50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;background:linear-gradient(135deg,#dad8cf,#c9c7bd);border:1px solid rgba(31,36,32,.18);position:relative;overflow:hidden;color:var(--bg)}
+.editorial-note-page__placeholder-inline:before{content:'';position:absolute;inset:20px;border:1px dashed rgba(31,36,32,.24)}
+.editorial-note-page__placeholder-inline span,.editorial-note-page__placeholder-inline strong{position:relative;z-index:1}
+.editorial-note-page__placeholder-inline span{font:500 9px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#6f795d}
+.editorial-note-page__placeholder-inline strong{font:800 clamp(22px,3vw,38px)/1 'Archivo',sans-serif;letter-spacing:-.03em;text-transform:uppercase}
+.editorial-note-page__placeholder-inline small{position:relative;z-index:1;max-width:520px;color:#666c66;font:400 12px/1.5 'Inter',sans-serif}
+@media(max-width:800px){.editorial-note-placeholder--lead{min-height:320px}.editorial-note-page__placeholder-inline{width:calc(100vw - 28px);min-height:300px}}
