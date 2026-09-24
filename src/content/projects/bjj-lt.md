@@ -25,7 +25,7 @@ metrics:
   - value: "B→A"
     label: currículo branca → azul
 ---
-## O que é o BJJ LT
+## Como eu ensino jiu-jitsu
 
 O BJJ LT não é só o site das aulas. É a forma como venho organizando minha docência em 2026: currículo, planejamento, observação do tatame, registro longitudinal e materiais digitais conectados ao que realmente foi ensinado.
 
