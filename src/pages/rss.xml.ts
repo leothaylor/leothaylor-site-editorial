@@ -4,7 +4,7 @@ const escapeXml = (value: string) => value.replace(/[<>&'\"]/g, (char) => ({ '<'
 
 export async function GET({ site }: { site: URL }) {
   const base = import.meta.env.BASE_URL;
-  const notes = (await getCollection('notes')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  const notes = (await getCollection('notes')).filter((note) => note.data.published).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
   const items = notes.map((note) => `
     <item>
       <title>${escapeXml(note.data.title)}</title>
@@ -18,7 +18,7 @@ export async function GET({ site }: { site: URL }) {
   <rss version="2.0"><channel>
     <title>Notas · Leo Thaylor</title>
     <link>${new URL(base, site).href}</link>
-    <description>Projetos, sistemas, decisões, testes e aprendizados.</description>
+    <description>Hipóteses, perguntas e ideias.</description>
     <language>pt-BR</language>${items}
   </channel></rss>`;
 
