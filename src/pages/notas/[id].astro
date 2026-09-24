@@ -28,7 +28,7 @@ const date = data.date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'lon
         <p>{data.summary}</p>
       </header>
 
-      {(data.heroImage || data.demo) && (
+      {(data.heroImage || data.demo || data.placeholderImage) && (
         <figure class="editorial-note-page__lead-image reveal">
           {data.heroImage
             ? <img src={data.heroImage} alt={data.heroAlt ?? ''} />
