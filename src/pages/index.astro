@@ -1,44 +1,22 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import NoteCard from '../components/NoteCard.astro';
 import '../styles/home-editorial.css';
-import '../styles/aps-proposals.css';
 
 const base = import.meta.env.BASE_URL;
-const projects = (await getCollection('projects'))
-  .filter((project) => project.data.featured)
-  .sort((a, b) => a.data.order - b.data.order);
-const notes = (await getCollection('notes')).sort((a, b) => a.data.order - b.data.order).slice(0, 3);
 ---
 <BaseLayout>
   <section class="editorial-hero">
     <div class="editorial-hero__inner">
       <div class="editorial-hero__copy reveal">
         <span class="editorial-kicker">LEO THAYLOR · RIO DE JANEIRO</span>
-        <h1><span>Eu resolvo</span><em>problemas.</em></h1>
+        <h1>Eu resolvo problemas.</h1>
         <p>Hoje isso inclui um radar vacinal que funciona offline, uma ferramenta visual para ligar ideias, sites de clientes, automações locais de vídeo e um sistema próprio de memória no Notion com backup em Markdown, CSV e Git.</p>
-
-        <div class="editorial-hero__actions" aria-label="Caminhos principais">
-          <a class="editorial-action editorial-action--primary" href={`${base}projetos/`} data-track="click_project">
-            <span>Ver projetos</span><b>↗</b>
-          </a>
-          <a class="editorial-action" href={`${base}notas/`} data-track="click_note">
-            <span>Ler notas</span><b>→</b>
-          </a>
-        </div>
       </div>
 
       <figure class="editorial-portrait reveal">
         <div class="editorial-portrait__frame">
           <img src="https://avatars.githubusercontent.com/u/132721431?v=4" alt="Leo Thaylor" decoding="async" />
-          <span class="editorial-portrait__stamp">LT</span>
         </div>
-        <figcaption>
-          <span>Leo Thaylor</span>
-          <small>projetos · sistemas · jiu-jitsu</small>
-        </figcaption>
       </figure>
     </div>
 
@@ -59,86 +37,5 @@ const notes = (await getCollection('notes')).sort((a, b) => a.data.order - b.dat
         <b>↗</b>
       </a>
     </nav>
-  </section>
-
-  <section class="editorial-now">
-    <div class="editorial-now__inner">
-      <header class="editorial-now__intro reveal">
-        <span class="eyebrow">AGORA</span>
-        <h2>O que está vivo neste momento.</h2>
-        <p>Uma fotografia rápida das frentes que continuo usando, publicando ou desenvolvendo.</p>
-        <small><i></i> atualizado em setembro de 2026</small>
-      </header>
-
-      <div class="editorial-now__list reveal">
-        <a href={`${base}projetos/radar-vacinal/`}><span>01</span><div><strong>Radar Vacinal ACS</strong><small>PWA · offline · dados locais</small></div><i>publicado</i><b>→</b></a>
-        <a href={`${base}projetos/teia-de-ideias/`}><span>02</span><div><strong>Teia de Ideias V2</strong><small>React · TypeScript · grafo visual</small></div><i>publicado</i><b>→</b></a>
-        <a href={`${base}projetos/espelho-local-notion/`}><span>03</span><div><strong>OS Leo</strong><small>Notion · GPT · histórico de decisões</small></div><i>ativo</i><b>→</b></a>
-        <a href="https://leothaylor.github.io/aulas-jiu-jitsu/" data-track="click_bjj"><span>04</span><div><strong>BJJ LT</strong><small>aulas · registros · Área do Aluno</small></div><i>ativo</i><b>↗</b></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="system-section section-pad">
-    <div class="system-intro reveal">
-      <span class="eyebrow">SISTEMA PESSOAL</span>
-      <h2>Como eu não perco o fio entre um projeto e outro.</h2>
-      <p>O Notion é meu painel central, mas o fluxo começa antes dele e termina com uma cópia local versionada. Assim eu consigo retomar decisões, entender por que algo mudou e continuar um projeto meses depois sem reconstruir toda a história.</p>
-    </div>
-
-    <div class="system-flow reveal" aria-label="Fluxo de captura, organização e backup">
-      <div class="flow-step"><span>CAPTURA</span><strong>WhatsApp</strong><p>Eu jogo ideias e observações num canal rápido, sem precisar organizar tudo na hora.</p></div>
-      <div class="flow-arrow"><i></i></div>
-      <div class="flow-step"><span>TRIAGEM</span><strong>GPT</strong><p>Uso o GPT para separar o que merece virar projeto, tarefa, decisão ou registro.</p></div>
-      <div class="flow-arrow"><i></i></div>
-      <div class="flow-step flow-step--main"><span>MEMÓRIA</span><strong>OS Leo no Notion</strong><p>No OS Leo, separo projetos, tarefas, ideias, conteúdo, estudos, decisões, experimentos e registros de BJJ.</p></div>
-      <div class="flow-arrow"><i></i></div>
-      <div class="flow-step"><span>BACKUP</span><strong>Espelho local + Git</strong><p>Um script em Python lê a API do Notion e gera Markdown e CSV numa pasta local versionada.</p></div>
-    </div>
-
-    <div class="system-metrics reveal">
-      <div><strong>414</strong><span>páginas espelhadas</span></div>
-      <div><strong>33</strong><span>bases exportadas</span></div>
-      <div><strong>512</strong><span>arquivos versionados</span></div>
-      <div><strong>0</strong><span>erros no checkpoint</span></div>
-    </div>
-    <a class="system-link reveal" href={`${base}projetos/espelho-local-notion/`}>Ver como o espelho do Notion funciona →</a>
-  </section>
-
-  <section class="section-pad featured-section" id="destaques">
-    <div class="section-head reveal">
-      <div>
-        <span class="eyebrow">PROJETOS EM DESTAQUE</span>
-        <h2>Alguns projetos que já posso mostrar por dentro.</h2>
-      </div>
-      <a class="section-link" href={`${base}projetos/`}>Ver todos →</a>
-    </div>
-    <div class="project-showcase">
-      {projects.map((project) => <ProjectCard project={project} mode="feature" />)}
-    </div>
-  </section>
-
-  <section class="aps-home-spotlight section-pad reveal">
-    <div class="aps-home-spotlight__inner">
-      <span class="eyebrow">ARQUIVO DE TRABALHO · APS</span>
-      <div>
-        <h2>Propostas de melhoria na APS.</h2>
-        <p>Reuni três trabalhos que desenvolvi a partir de problemas que observei na Clínica da Família: a Caderneta da Gestante, o Projeto ASTA e uma proposta de acompanhamento nutricional longitudinal no pré-natal.</p>
-      </div>
-      <a class="aps-home-spotlight__link" href={`${base}notas/propostas-melhoria-aps/`} data-track="click_note">Ver coleção →</a>
-    </div>
-  </section>
-
-  <section class="section-pad notes-section">
-    <div class="section-head reveal">
-      <div>
-        <span class="eyebrow">NOTAS DE TRABALHO</span>
-        <h2>O que eu mudei, testei e aprendi no caminho.</h2>
-      </div>
-      <a class="section-link" href={`${base}notas/`}>Todas as notas →</a>
-    </div>
-    <div class="notes-grid">
-      {notes.map((note) => <NoteCard note={note} />)}
-    </div>
   </section>
 </BaseLayout>
