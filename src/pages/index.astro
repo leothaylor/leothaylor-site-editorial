@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import NoteCard from '../components/NoteCard.astro';
-import '../styles/home-marquee.css';
+import '../styles/home-editorial.css';
 import '../styles/aps-proposals.css';
 
 const base = import.meta.env.BASE_URL;
@@ -13,45 +13,69 @@ const projects = (await getCollection('projects'))
 const notes = (await getCollection('notes')).sort((a, b) => a.data.order - b.data.order).slice(0, 3);
 ---
 <BaseLayout>
-  <section class="hero-v2 section-pad">
-    <div class="hero-v2__copy reveal">
-      <span class="eyebrow">LEO THAYLOR · RIO DE JANEIRO</span>
-      <h1>Eu resolvo problemas.</h1>
-      <p>Hoje isso inclui um radar vacinal que funciona offline, uma ferramenta visual para ligar ideias, sites de clientes, automações locais de vídeo e um sistema próprio de memória no Notion com backup em Markdown, CSV e Git.</p>
-      <div class="hero-v2__actions">
-        <a class="button" href={`${base}projetos/`} data-track="click_project">Ver projetos</a>
-        <a class="button button--ghost" href="https://leothaylor.github.io/aulas-jiu-jitsu/" data-track="click_bjj">Treinar Jiu-Jitsu ↗</a>
+  <section class="editorial-hero">
+    <div class="editorial-hero__inner">
+      <div class="editorial-hero__copy reveal">
+        <span class="editorial-kicker">LEO THAYLOR · RIO DE JANEIRO</span>
+        <h1><span>Eu resolvo</span><em>problemas.</em></h1>
+        <p>Hoje isso inclui um radar vacinal que funciona offline, uma ferramenta visual para ligar ideias, sites de clientes, automações locais de vídeo e um sistema próprio de memória no Notion com backup em Markdown, CSV e Git.</p>
+
+        <div class="editorial-hero__actions" aria-label="Caminhos principais">
+          <a class="editorial-action editorial-action--primary" href={`${base}projetos/`} data-track="click_project">
+            <span>Ver projetos</span><b>↗</b>
+          </a>
+          <a class="editorial-action" href={`${base}notas/`} data-track="click_note">
+            <span>Ler notas</span><b>→</b>
+          </a>
+        </div>
       </div>
+
+      <figure class="editorial-portrait reveal">
+        <div class="editorial-portrait__frame">
+          <img src="https://avatars.githubusercontent.com/u/132721431?v=4" alt="Leo Thaylor" decoding="async" />
+          <span class="editorial-portrait__stamp">LT</span>
+        </div>
+        <figcaption>
+          <span>Leo Thaylor</span>
+          <small>projetos · sistemas · jiu-jitsu</small>
+        </figcaption>
+      </figure>
     </div>
 
-    <aside class="hero-board reveal" aria-label="Projetos e sistemas em uso">
-      <div class="hero-board__head"><span>AGORA</span><b>4 FRENTES EM USO</b></div>
-      <div class="hero-board__item"><span>01</span><div><strong>Radar Vacinal ACS</strong><small>PWA · offline · dados locais</small></div><i>PUBLICADO</i></div>
-      <div class="hero-board__item"><span>02</span><div><strong>Teia de Ideias V2</strong><small>React · TypeScript · grafo visual</small></div><i>PUBLICADO</i></div>
-      <div class="hero-board__item"><span>03</span><div><strong>OS Leo</strong><small>Notion · GPT · histórico de decisões</small></div><i>ATIVO</i></div>
-      <div class="hero-board__item"><span>04</span><div><strong>BJJ LT</strong><small>aulas · registros · Área do Aluno</small></div><i>ATIVO</i></div>
-      <div class="hero-board__signal"><span></span> última revisão: setembro de 2026</div>
-    </aside>
-
-    <div class="hero-routes reveal" aria-label="Caminhos principais">
-      <a href="https://leothaylor.github.io/aulas-jiu-jitsu/" data-track="click_bjj"><span>01</span><strong>Jiu-Jitsu</strong><small>Aulas, método e Área do Aluno.</small><b>↗</b></a>
-      <a href={`${base}projetos/`} data-track="click_project"><span>02</span><strong>Projetos</strong><small>Sites, produtos, sistemas e automações.</small><b>→</b></a>
-      <a href={`${base}notas/`} data-track="click_note"><span>03</span><strong>Notas</strong><small>Decisões, testes, erros e aprendizados.</small><b>→</b></a>
-    </div>
+    <nav class="editorial-routes reveal" aria-label="Entradas principais">
+      <a href={`${base}projetos/`} data-track="click_project">
+        <span>01</span>
+        <div><strong>Projetos</strong><small>Sites, produtos, sistemas e automações.</small></div>
+        <b>→</b>
+      </a>
+      <a href={`${base}notas/`} data-track="click_note">
+        <span>02</span>
+        <div><strong>Notas</strong><small>Decisões, testes, erros e aprendizados.</small></div>
+        <b>→</b>
+      </a>
+      <a href="https://leothaylor.github.io/aulas-jiu-jitsu/" data-track="click_bjj">
+        <span>03</span>
+        <div><strong>Jiu-Jitsu</strong><small>Aulas, método e Área do Aluno.</small></div>
+        <b>↗</b>
+      </a>
+    </nav>
   </section>
 
-  <section class="signal-strip" aria-hidden="true">
-    <div class="signal-strip__track">
-      <span class="signal-strip__copy">
-        NOTION <i>+</i> GPT <i>+</i> GIT <i>+</i> PYTHON <i>+</i> WEB <i>+</i> BJJ <i>+</i> AUTOMAÇÃO <i>+</i> CONTEÚDO <i>+</i>
-        NOTION <i>+</i> GPT <i>+</i> GIT <i>+</i> PYTHON <i>+</i> WEB <i>+</i> BJJ <i>+</i> AUTOMAÇÃO <i>+</i> CONTEÚDO <i>+</i>
-        NOTION <i>+</i> GPT <i>+</i> GIT <i>+</i> PYTHON <i>+</i> WEB <i>+</i> BJJ <i>+</i> AUTOMAÇÃO <i>+</i> CONTEÚDO <i>+</i>
-      </span>
-      <span class="signal-strip__copy">
-        NOTION <i>+</i> GPT <i>+</i> GIT <i>+</i> PYTHON <i>+</i> WEB <i>+</i> BJJ <i>+</i> AUTOMAÇÃO <i>+</i> CONTEÚDO <i>+</i>
-        NOTION <i>+</i> GPT <i>+</i> GIT <i>+</i> PYTHON <i>+</i> WEB <i>+</i> BJJ <i>+</i> AUTOMAÇÃO <i>+</i> CONTEÚDO <i>+</i>
-        NOTION <i>+</i> GPT <i>+</i> GIT <i>+</i> PYTHON <i>+</i> WEB <i>+</i> BJJ <i>+</i> AUTOMAÇÃO <i>+</i> CONTEÚDO <i>+</i>
-      </span>
+  <section class="editorial-now">
+    <div class="editorial-now__inner">
+      <header class="editorial-now__intro reveal">
+        <span class="eyebrow">AGORA</span>
+        <h2>O que está vivo neste momento.</h2>
+        <p>Uma fotografia rápida das frentes que continuo usando, publicando ou desenvolvendo.</p>
+        <small><i></i> atualizado em setembro de 2026</small>
+      </header>
+
+      <div class="editorial-now__list reveal">
+        <a href={`${base}projetos/radar-vacinal/`}><span>01</span><div><strong>Radar Vacinal ACS</strong><small>PWA · offline · dados locais</small></div><i>publicado</i><b>→</b></a>
+        <a href={`${base}projetos/teia-de-ideias/`}><span>02</span><div><strong>Teia de Ideias V2</strong><small>React · TypeScript · grafo visual</small></div><i>publicado</i><b>→</b></a>
+        <a href={`${base}projetos/espelho-local-notion/`}><span>03</span><div><strong>OS Leo</strong><small>Notion · GPT · histórico de decisões</small></div><i>ativo</i><b>→</b></a>
+        <a href="https://leothaylor.github.io/aulas-jiu-jitsu/" data-track="click_bjj"><span>04</span><div><strong>BJJ LT</strong><small>aulas · registros · Área do Aluno</small></div><i>ativo</i><b>↗</b></a>
+      </div>
     </div>
   </section>
 
