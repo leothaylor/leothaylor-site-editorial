@@ -1,14 +1,14 @@
 ---
 title: Espelho Local do Notion
-summary: "Eu mantenho uma cópia local do meu Notion em Markdown e CSV, com histórico no Git e atualização por duplo clique."
+summary: "Eu queria uma cópia local do meu Notion que pudesse atualizar por duplo clique. Defini o fluxo, os requisitos e fui validando a automação construída com apoio de IA até ela ficar estável."
 category: Sistema interno
 status: Validado
 year: "2026"
-role: Especificação, arquitetura e validação operacional
+role: Concepção do fluxo, requisitos, testes e validação com apoio de IA
 proof: "414 páginas, 33 bases e 512 arquivos versionados no checkpoint, com 0 erros e idempotência comprovada."
 featured: false
 order: 8
-tags: [Python, Notion API, Git, backup, dados, automação]
+tags: [Notion, backup, automação, IA, dados]
 accent: "#F0F0EA"
 accent2: "#4CAF79"
 surface: "#111311"
@@ -25,13 +25,19 @@ metrics:
 ---
 ## Por que eu fiz
 
-Meu Notion concentra projetos, tarefas, ideias, conteúdo, estudos, decisões, experimentos, aulas de BJJ e vários contextos de trabalho. Eu queria uma cópia que continuasse acessível fora da interface do Notion e que também mostrasse o histórico de mudanças.
+Meu Notion concentra projetos, tarefas, ideias, conteúdo, estudos, decisões, experimentos, aulas de BJJ e vários contextos de trabalho. Eu queria uma cópia que continuasse acessível fora da interface do Notion e que também preservasse o histórico de mudanças.
 
-## Como funciona
+## Meu papel no projeto
 
-O script usa a API oficial do Notion para descobrir páginas e bases compartilhadas com a integração. Páginas viram arquivos Markdown. Bases geram schema, índice e CSV. A saída fica em uma pasta local chamada `NOTION_MIRROR`.
+Eu não parti de conhecimento prévio de Python, Git ou da API do Notion para escrever tudo manualmente. Meu papel foi definir o problema, como eu queria usar a ferramenta, quais saídas precisava receber e quais comportamentos seriam considerados corretos.
 
-A atualização acontece por duplo clique em `ESPELHAR_NOTION.bat`. Na primeira execução, o próprio fluxo prepara o ambiente Python isolado. O token fica no `.env` e não entra no Git.
+O código foi sendo criado e corrigido com apoio de IA. Eu testei as execuções, identifiquei problemas, pedi ajustes, comparei resultados e mantive o que realmente funcionou no uso cotidiano.
+
+## Como ficou o uso
+
+Na prática, eu atualizo o espelho por duplo clique. A automação consulta o Notion, transforma páginas em Markdown e bases em arquivos estruturados, grava tudo numa pasta local e mantém um histórico das mudanças.
+
+Por baixo, a solução usa tecnologias como Python, API do Notion e Git. Elas são parte da implementação da ferramenta, não uma declaração de que eu domino essas tecnologias manualmente.
 
 ## O que foi validado
 
@@ -39,10 +45,10 @@ No checkpoint de 15/08/2026, o espelho processou 414 páginas e 33 bases. A saí
 
 A execução levou cerca de 7 minutos. Depois das correções, o relatório registrou 0 erros e 0 blocos degradados.
 
-## Idempotência
+## Um teste importante
 
-Duas execuções seguidas, sem mudança no Notion, terminaram com `git diff` vazio. O conteúdo só é regravado quando alguma coisa muda, o que evita commits artificiais causados pelo próprio backup.
+Duas execuções seguidas, sem mudança no Notion, terminaram sem diferenças novas. Isso era importante porque eu não queria que o próprio backup criasse alterações artificiais a cada execução.
 
-## Papel dentro do meu sistema
+## Por que continuo usando
 
-O fluxo completo fica assim: captura rápida, triagem, organização no Notion e cópia local versionada. O backup protege os arquivos; o histórico do Git ajuda a recuperar quando e como o conteúdo mudou.
+O valor para mim não está em operar Git ou Python diretamente. Está em ter uma memória local do meu sistema que eu consigo atualizar de forma simples e consultar se algum dia precisar recuperar o estado anterior de uma informação.
