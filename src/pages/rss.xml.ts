@@ -4,7 +4,7 @@ const escapeXml = (value: string) => value.replace(/[<>&'\"]/g, (char) => ({ '<'
 
 export async function GET({ site }: { site: URL }) {
   const base = import.meta.env.BASE_URL;
-  const notes = (await getCollection('notes')).filter((note) => note.data.published).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  const notes = (await getCollection('notes')).filter((note) => note.data.published && !note.data.demo).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
   const items = notes.map((note) => `
     <item>
       <title>${escapeXml(note.data.title)}</title>
