@@ -1,11 +1,11 @@
 ---
 title: AI Extension Lab
-summary: "Eu transformo tarefas repetitivas em extensões GPT com regras próprias para direção visual, identidade, storyboard, roteiro, produto, mapas e conteúdo."
+summary: "Eu transformo tarefas repetitivas em extensões GPT com regras próprias para direção visual, identidade, storyboard e produto."
 category: Laboratório
 status: Em laboratório
 year: "2026"
 role: Desenho de sistema, instruções, base de conhecimento e validação
-proof: "Hoje mostro oito extensões que já usei na prática, validei visualmente ou mantive porque resolvem uma tarefa concreta."
+proof: "Hoje mostro cinco extensões que já usei na prática, validei visualmente ou mantive porque resolvem uma tarefa concreta."
 featured: false
 order: 10
 tags: [IA, agentes, prompt systems, validação, design]
@@ -14,12 +14,12 @@ accent2: "#D8C36A"
 surface: "#111827"
 ink: "#F5F7FF"
 metrics:
-  - value: "8"
+  - value: "5"
     label: extensões selecionadas
-  - value: "2"
-    label: usadas com frequência
-  - value: "6"
+  - value: "5"
     label: usadas ou validadas na prática
+  - value: "1"
+    label: validada com terceiro
   - value: "GPT"
     label: agentes especializados
 ---
@@ -36,9 +36,7 @@ Hoje eu uso esse formato para coisas como:
 - preservar um rosto enquanto a cena inteira muda;
 - trocar roupa sem alterar pose, corpo ou identidade;
 - converter briefing em storyboard;
-- gerar dezenas de opções de roteiro a partir de um briefing editorial;
-- criar prompts dentro de uma linguagem visual fixa;
-- preparar estruturas hierárquicas para mapas no NotebookLM.
+- criar prompts dentro de uma linguagem visual fixa.
 
 O inventário completo fica no meu sistema interno. Aqui estão somente as extensões que hoje representam melhor esse trabalho.
 
@@ -176,44 +174,6 @@ O que eu gostei nesse teste foi conseguir passar minha direção para outra pess
 
 **Uso atual:** ocasional. Validado em uso com terceiro e com exemplos visuais que podem ser mostrados no case.
 
-## Roteirista ROTINA ACS
-
-Hoje é uma das extensões que mais uso.
-
-O Roteirista ROTINA ACS recebe um briefing editorial que já foi organizado no Notion e devolve várias opções de roteiro.
-
-Antes eu usava a ferramenta para conversar e chegar a um roteiro único. O fluxo evoluiu.
-
-Hoje funciona melhor assim:
-
-`briefing estruturado no Notion → lote de roteiros → peneira humana → seleção → produção`
-
-A extensão não decide sozinha o que vai ser publicado. Ela amplia o espaço de opções.
-
-Eu comparo os roteiros, descarto os fracos, combino partes quando necessário e escolho o que realmente vale produzir.
-
-Para mim, o ganho é conseguir explorar vários ângulos sem recomeçar uma conversa longa toda vez e sem perder a linguagem do ROTINA ACS.
-
-**Uso atual:** frequente. É uma extensão operacional, não apenas um experimento.
-
-## Designer Editorial ACS Premium Flat 2D
-
-Também está entre as extensões que mais uso.
-
-O ROTINA ACS possui formatos visuais próprios. Um deles é o Flat 2D, com personagem ACS, composição específica, copy integrada e regras visuais já definidas.
-
-Quando tenho roteiro, copy e direção visual, envio esse material para a extensão. Ela devolve prompts prontos dentro desse formato.
-
-Na prática:
-
-`roteiro + copy + direção visual → extensão → prompt visual pronto → geração da arte`
-
-Isso evita reescrever toda a especificação visual do canal a cada slide.
-
-O ganho é não precisar reescrever toda a especificação visual a cada uso. As restrições daquele formato já ficam dentro da extensão.
-
-**Uso atual:** frequente. É uma das ferramentas mais maduras do laboratório porque participa diretamente da produção atual do ROTINA ACS.
-
 ## Virtual Outfit Identity Lock GPT
 
 O Virtual Outfit faz uma edição controlada de roupa e acessórios.
@@ -233,26 +193,6 @@ A pessoa precisa continuar sendo a mesma. Pose, corpo, enquadramento, rosto e ce
 O resultado ficou especialmente bom nos testes que fiz. Ele funciona quase como um provador virtual baseado em geração de imagem, mas com foco em preservar identidade e composição.
 
 **Uso atual:** ocasional. Não é uma ferramenta que preciso toda semana, mas o resultado é forte e demonstra bem a lógica de identity lock.
-
-## Gerador de Mapas NotebookLM | OS Leo
-
-Essa extensão nasceu de um problema diferente: transformar informação complexa em uma estrutura que o NotebookLM consiga renderizar corretamente como mapa.
-
-Eu usava em situações como planejamento de reunião, fluxograma, currículo ou estrutura de decisão.
-
-O erro comum era mandar um texto grande e esperar que o NotebookLM descobrisse sozinho quais elementos eram pais, filhos e subníveis.
-
-A extensão passou a fazer essa arquitetura antes.
-
-O fluxo ficou:
-
-`conversa ou conteúdo bruto → estrutura hierárquica serializada → NotebookLM → mapa/fluxograma`
-
-Usei essa lógica, por exemplo, para organizar estruturas ligadas ao BJJ e à trajetória faixa branca → azul.
-
-Eu não uso a extensão para desenhar o mapa final. Ela organiza a informação antes, para o NotebookLM receber uma árvore explícita e ter menos espaço para entender a hierarquia de forma errada.
-
-**Uso atual:** ocasional. Continua útil sempre que preciso transformar raciocínio complexo em uma representação visual organizada.
 
 ## Quando eu decido criar uma extensão
 
