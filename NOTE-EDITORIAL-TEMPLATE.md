@@ -64,3 +64,20 @@ Abertura do raciocínio.
 As imagens entram onde ajudam o raciocínio. Elas podem ser usadas como imagem principal ou ao longo da matéria, com legenda e fonte quando necessário.
 
 Evitar badges, textos decorativos ou rótulos sobre fotografias sem função concreta.
+
+
+## Princípio editorial
+
+Notas não existem para preencher o site. Cada publicação deve partir de material que já exista no histórico do Leo: pesquisa anterior, conversa, registro cognitivo, hipótese documentada, arquivo, anotação ou fonte já consultada.
+
+Se faltar evidência ou contexto, registrar a lacuna explicitamente. Não fazer pesquisa nova apenas para completar visualmente uma matéria.
+
+Preservar a cronologia intelectual: deixar claro o estado da investigação e a data correspondente.
+
+Estados internos recomendados:
+
+- **PRONTA PARA ESTRUTURAR** — já existe material suficiente para uma matéria.
+- **EM DESENVOLVIMENTO** — o raciocínio existe, mas ainda falta organizar material já produzido.
+- **AGUARDANDO INVESTIGAÇÃO** — pergunta interessante, mas ainda não pesquisada o suficiente.
+
+Hipótese, interpretação, evidência e conclusão devem permanecer separadas.
