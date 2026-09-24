@@ -95,20 +95,6 @@ A operação combina conteúdo orgânico, tráfego pago, UTMs, eventos de tracki
 
 Nem todo dado encaixa perfeitamente entre plataformas. Quando há divergência entre Meta, analytics, Hotmart ou outra fonte, eu tento registrar a diferença em vez de forçar uma precisão que não existe.
 
-## Decisões registradas
-
-Eu mantenho mudanças de produto e aquisição documentadas.
-
-Alguns exemplos:
-
-- o Radar deixou de seguir como produto premium e virou ferramenta gratuita;
-- o APS360 perdeu prioridade;
-- o papel do SuperKit foi revisto ao longo da operação;
-- criativos, landing e campanhas passaram por rodadas sucessivas de ajuste;
-- o conteúdo editorial ganhou regras próprias para evitar virar apenas divulgação comercial.
-
-Esse histórico permite comparar o que eu imaginava que funcionaria com o que realmente aconteceu depois.
-
 ## Por que considero um ecossistema
 
 O projeto não é apenas um perfil, um produto ou um site.
