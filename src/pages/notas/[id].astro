@@ -1,9 +1,10 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/notes-editorial.css';
 
 export async function getStaticPaths() {
-  const notes = await getCollection('notes');
+  const notes = (await getCollection('notes')).filter((note) => note.data.published);
   return notes.map((note) => ({ params: { id: note.id }, props: { note } }));
 }
 
@@ -14,14 +15,35 @@ const base = import.meta.env.BASE_URL;
 const date = data.date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
 ---
 <BaseLayout title={`${data.title} · Leo Thaylor`} description={data.summary}>
-  <article class="note-page section-pad">
-    <a class="back-link" href={`${base}notas/`}>← Todas as notas</a>
-    <header class="note-hero reveal">
-      <div class="case-hero__meta"><span class="eyebrow">{data.category}</span><time datetime={data.date.toISOString()}>{date}</time></div>
-      <h1>{data.title}</h1>
-      <p>{data.summary}</p>
-      {data.provenance && <div class="provenance"><strong>DE ONDE VÊM ESTES REGISTROS</strong><span>{data.provenance}</span></div>}
-    </header>
-    <div class="prose note-content reveal"><Content /></div>
+  <article class="editorial-note-page">
+    <div class="editorial-note-page__shell">
+      <a class="editorial-note-page__back" href={`${base}notas/`}>← Notas</a>
+
+      <header class="editorial-note-page__hero reveal">
+        <div class="editorial-note-page__meta">
+          <span>{data.category}</span>
+          <time datetime={data.date.toISOString()}>{date}</time>
+        </div>
+        <h1>{data.title}</h1>
+        <p>{data.summary}</p>
+      </header>
+
+      {data.heroImage && (
+        <figure class="editorial-note-page__lead-image reveal">
+          <img src={data.heroImage} alt={data.heroAlt ?? ''} />
+          {data.heroCaption && <figcaption>{data.heroCaption}</figcaption>}
+        </figure>
+      )}
+
+      <div class="editorial-note-page__body reveal">
+        {data.provenance && (
+          <aside class="editorial-note-page__provenance">
+            <strong>CONTEXTO / ORIGEM</strong>
+            <p>{data.provenance}</p>
+          </aside>
+        )}
+        <Content />
+      </div>
+    </div>
   </article>
 </BaseLayout>
