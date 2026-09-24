@@ -4,7 +4,7 @@ summary: "Aguardando texto real. Este subtítulo servirá para apresentar a ques
 date: 2026-09-24
 category: "ESTRUTURA DE EXEMPLO"
 order: 0
-published: true
+published: false
 demo: true
 provenance: "Conteúdo provisório criado apenas para visualizar a estrutura editorial antes da escolha dos assuntos reais."
 ---
