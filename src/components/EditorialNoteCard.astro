@@ -1,0 +1,23 @@
+---
+const { note } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const date = note.data.date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+---
+<article class="editorial-note-card">
+  <a href={`${base}notas/${note.id}/`}>
+    {note.data.heroImage && (
+      <figure class="editorial-note-card__visual">
+        <img src={note.data.heroImage} alt={note.data.heroAlt ?? ''} loading="lazy" />
+      </figure>
+    )}
+    <div class="editorial-note-card__body">
+      <div class="editorial-note-card__meta">
+        <span>{note.data.category}</span>
+        <time datetime={note.data.date.toISOString()}>{date}</time>
+      </div>
+      <h2>{note.data.title}</h2>
+      <p>{note.data.summary}</p>
+      <span class="editorial-note-card__link">Ler nota →</span>
+    </div>
+  </a>
+</article>
