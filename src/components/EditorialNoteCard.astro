@@ -5,7 +5,7 @@ const date = note.data.date.toLocaleDateString('pt-BR', { day: '2-digit', month:
 ---
 <article class="editorial-note-card">
   <a href={`${base}notas/${note.id}/`}>
-    {(note.data.heroImage || note.data.demo) && (
+    {(note.data.heroImage || note.data.demo || note.data.placeholderImage) && (
       <figure class="editorial-note-card__visual">
         {note.data.heroImage
           ? <img src={note.data.heroImage} alt={note.data.heroAlt ?? ''} loading="lazy" />
