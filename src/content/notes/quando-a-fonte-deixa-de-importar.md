@@ -1,5 +1,5 @@
 ---
-title: "Quando a fonte continua existindo, mas deixa de importar"
+title: "E se a IA fizer a gente parar de consultar as fontes?"
 summary: "Uma hipótese sobre o que acontece quando perguntar à IA começa a substituir pesquisar, comparar e consultar a origem."
 date: 2026-09-17
 category: "IA E SOCIEDADE"
